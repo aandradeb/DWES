@@ -1,6 +1,6 @@
 <html>
     <body>
-	<h1>Jubilacion</h1>
+	<h1>Jubilación</h1>
 	<?php
 	    function edad_en_10_años($edad) {
 		return $edad + 10;
