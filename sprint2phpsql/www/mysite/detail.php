@@ -12,7 +12,8 @@
             $result = mysqli_query($db, $query) or die('Query error');
             $only_row = mysqli_fetch_array($result);
             echo '<h1>'.$only_row['nombre'].'</h1>';
-            echo '<h2>'.$only_row['fecha_lanzamiento'].'</h2>';
+            echo '<h2>'.$only_row['desarrolladora'].'</h2>';
+            echo '<h3>'.$only_row['fecha_lanzamiento'].'</h3>';
             echo '<img style="max-width: 20%;" src="'.$only_row['url_imagen'].'" alt=juego>';
         ?>
         <h3>Comentarios:</h3>
@@ -21,7 +22,7 @@
             $query2 = 'SELECT * FROM tComentarios WHERE juego_id='.$juego_id;
             $result2 = mysqli_query($db, $query2) or die('Query error');
             while ($row = mysqli_fetch_array($result2)) {
-            echo '<li>'.$row['comentario'].'</li>';
+                echo '<li>'.$row['comentario'].'</li>';
             }
             mysqli_close($db);
         ?>
