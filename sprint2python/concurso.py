@@ -1,3 +1,5 @@
+import random
+
 questions = [
     {
         "name": "What year was DOOM released?",
@@ -28,6 +30,7 @@ questions = [
     }
 ]
 
+selected_questions = random.sample(range(0, len(questions)), 2)
 CORRECT_ANSWER = 10
 WRONG_ANSWER = 5
 user_points = 0
@@ -35,10 +38,11 @@ user_answers = []
 
 def display_questions():
     """ Display available questions """
-    for question in questions:
-        print("\n" + question["name"])
 
-        for key, value in question["answers"].items():
+    for i in selected_questions:
+        print("\n" + questions[i]["name"])
+
+        for key, value in questions[i]["answers"].items():
             value = str(value)
             print(f"   {key}) {value}")
 
@@ -51,9 +55,9 @@ def calculate_points(user_points):
     i = 0
 
     for answer in user_answers:
-        if answer == questions[i]["good_answer"]:
+        if answer == questions[selected_questions[i]]["good_answer"]:
             user_points += CORRECT_ANSWER
-        elif answer != questions[i]["good_answer"]:
+        elif answer != questions[selected_questions[i]]["good_answer"]:
             user_points -= CORRECT_ANSWER
         i += 1
     
