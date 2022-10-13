@@ -5,9 +5,10 @@
     <body>
         <?php
             $juego_id = $_POST['juego_id'];
+            $fecha = $_POST['fecha'];
             $comentario = $_POST['new_comment'];
-            $query = "INSERT INTO tComentarios(comentario, usuario_id, juego_id)
-            VALUES ('".$comentario."', NULL,".$juego_id.")";
+            $query = "INSERT INTO tComentarios(comentario, usuario_id, juego_id, fecha)
+            VALUES ('".$comentario."', NULL,".$juego_id.", '".$fecha."')";
             mysqli_query($db, $query) or die('Error');
             echo "<p>Nuevo comentario ";
             echo mysqli_insert_id($db);

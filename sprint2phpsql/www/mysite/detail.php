@@ -22,7 +22,7 @@
             $query2 = 'SELECT * FROM tComentarios WHERE juego_id='.$juego_id;
             $result2 = mysqli_query($db, $query2) or die('Query error');
             while ($row = mysqli_fetch_array($result2)) {
-                echo '<li>'.$row['comentario'].'</li>';
+                echo '<li>'.$row['comentario'].' - '.$row['fecha'].'</li>';
             }
             mysqli_close($db);
         ?>
@@ -32,6 +32,7 @@
         <form action="/comment.php" method="post">
             <textarea rows="4" cols="50" name="new_comment"></textarea><br>
             <input type="hidden" name="juego_id" value="<?php echo $juego_id; ?>">
+            <input type="hidden" name="fecha" value="<?php echo date('y-m-d', time()); ?>">
             <input type="submit" value="Comentar">
         </form>
     </body>
