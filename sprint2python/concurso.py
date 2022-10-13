@@ -1,24 +1,70 @@
-question = {
-    "name": "What year was DOOM released?",
-    "good_answer": "b",
-    "answers": {
-        "a": 1990,
-        "b": 1993,
-        "c": 1994
+questions = [
+    {
+        "name": "What year was DOOM released?",
+        "good_answer": "b",
+        "answers": {
+            "a": 1990,
+            "b": 1993,
+            "c": 1994
+        }
+    }, 
+    {
+        "name": "Which is not a compiled language?",
+        "good_answer": "c",
+        "answers": {
+            "a": "Rust",
+            "b": "C++",
+            "c": "JavaScript"
+        }
+    },
+    {
+        "name": "What is ANSI?",
+        "good_answer": "a",
+        "answers": {
+            "a": "American National Standards Institute",
+            "b": "American Nautilus Sphere Institute",
+            "c": "Anchor Nilo Salt Ins"
+        }
     }
-}
+]
+
+CORRECT_ANSWER = 10
+WRONG_ANSWER = 5
+user_points = 0
+user_answers = []
+
+def display_questions():
+    """ Display available questions """
+    for question in questions:
+        print("\n" + question["name"])
+
+        for key, value in question["answers"].items():
+            value = str(value)
+            print(f"   {key}) {value}")
+
+        user_answer = input("\nSelect an answer: ")
+        user_answers.append(user_answer.lower())
+
+
+def calculate_points(user_points):
+    """ Calculate points of user """
+    i = 0
+
+    for answer in user_answers:
+        if answer == questions[i]["good_answer"]:
+            user_points += CORRECT_ANSWER
+        elif answer != questions[i]["good_answer"]:
+            user_points -= CORRECT_ANSWER
+        i += 1
+    
+    return user_points
+
+
+def main():
+    """ Main function to execute all code """
+    display_questions()
+    print("Los puntos totales son: " + str(calculate_points(user_points)))
+
 
 if __name__ == '__main__':
-    print(question["name"])
-    for key, value in question["answers"].items():
-        value = str(value)
-        print(f"   {key}) {value}")
-
-    user_answer = input("\nSelect an answer: ")
-
-    if user_answer == question["good_answer"]:
-        print("Enhorabuena, has acertado!")
-    elif user_answer in ["a", "c"]:
-        print("No era la respuesta correcta =(")
-    elif user_answer not in ["a", "b", "c"]:
-        print("Ni a, b, c escogiste!")
+    main()
