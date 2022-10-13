@@ -9,11 +9,16 @@ question = {
 }
 
 if __name__ == '__main__':
-    user_answer = input(question["name"] + ": " )
+    print(question["name"])
+    for key, value in question["answers"].items():
+        value = str(value)
+        print(f"   {key}) {value}")
+
+    user_answer = input("\nSelect an answer: ")
 
     if user_answer == question["good_answer"]:
         print("Enhorabuena, has acertado!")
     elif user_answer in ["a", "c"]:
         print("No era la respuesta correcta =(")
     elif user_answer not in ["a", "b", "c"]:
-        print("Ni a, b, cescogiste!")
+        print("Ni a, b, c escogiste!")
