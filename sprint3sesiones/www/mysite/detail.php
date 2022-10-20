@@ -35,5 +35,6 @@
             <input type="hidden" name="fecha" value="<?php echo date('y-m-d', time()); ?>">
             <input type="submit" value="Comentar">
         </form>
+        <a href="/logout.php">Logout</a>
     </body>
 </html>
