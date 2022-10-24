@@ -2,10 +2,21 @@
     <head><meta charset="UTF-8"></head>
 <body>
     <h1>Login</h1>
-    <form action="login.php" method="post">
-        <input name="f_email" type="text" placeholder="e-mail"><br>
-        <input name="f_password" type="password" placeholder="Contraseña"><br>
+    <form id="formulario" action="login.php" method="post">
+        <input id="f_email" name="f_email" type="text" placeholder="e-mail"><br>
+        <input id="f_password" name="f_password" type="password" placeholder="Contraseña"><br>
         <input type="submit" value="Iniciar sesión">
     </form>
+    <script>
+        document.getElementById("formulario").addEventListener('submit', () => {
+          const f_email = document.getElementById("f_email").value;
+          const f_password = document.getElementById("f_password").value;
+
+          if (f_email.length == 0 || f_password.length == 0) {
+            alert("Campo o campos vacios, porfavor rellenalos");
+          }
+        }); 
+        
+    </script>
 </body>
 </html>
