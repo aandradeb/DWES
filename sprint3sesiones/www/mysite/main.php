@@ -4,21 +4,77 @@
 <html>
 	<head>
 		<style>
+			table {
+				border: solid 1px #DDEEEE;
+				border-collapse: collapse;
+				border-spacing: 0;
+				font: normal 13px Arial, sans-serif;
+			}
+
+			th {
+				background-color: #DDEFEF;
+				border: solid 1px #DDEEEE;
+				color: #336B6B;
+				padding: 10px;
+				text-align: left;
+				text-shadow: 1px 1px 1px #fff;
+			}
+
+			td {
+				border: solid 1px #DDEEEE;
+				color: #333;
+				padding: 10px;
+				text-shadow: 1px 1px 1px #fff;
+			}
+
 			img {
 				width: 96px;
+				transition: 0.3s ease-in-out;
 			}
-			table, th, td {
-				border: 1px solid black;
-				border-collapse: collapse;
+			
+			img:hover{
+				transform: scale(1.5);
+			}
+
+			button {
+				position: absolute;
+				right: 10px;
+				padding: 10px;
+				font-size: 18px;
+				margin-top: 2px;
+				border: none;
+				color: white;
+				background-color: #DDEFEF;
+				color: #336B6B;
+			}
+
+			button a {
+				color: #336B6B;
+			} 
+
+			button a:visited {
+				color: #336B6B;
+			}
+
+			a {
+				text-decoration: none;
+			}
+
+			h1 {
+				display: inline-block;
 			}
 		</style>
 	</head>
     <body>
 		<h1>Conexión establecida</h1>
+		<button><a href="/logout.php">Logout</a></button>
 		<table>
 			<tr>
-				<th>Juego</th>
+				<th>Id</th>
+				<th>Nombre</th>
 				<th>Imagen</th>
+				<th>Desarrolladora</th>
+				<th>Fecha lanzamiento</th>
 			</tr>
 		<?php
 		// Lanzar una query
@@ -40,6 +96,5 @@
 		mysqli_close($db);
 		?>
 		</table>
-		<a href="/logout.php">Logout</a>
     </body>
 </html>
