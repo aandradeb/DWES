@@ -67,7 +67,13 @@
 	</head>
     <body>
 		<h1>Conexión establecida</h1>
-		<button><a href="/logout.php">Logout</a></button>
+		<?php
+      session_start();
+
+      if (!empty($_SESSION['user_id'])) {
+        echo "<button><a href='/logout.php'>Logout</a></button>";
+      }
+		?>
 		<table>
 			<tr>
 				<th>Id</th>
