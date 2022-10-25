@@ -71,7 +71,8 @@
       session_start();
 
       if (!empty($_SESSION['user_id'])) {
-        echo "<button><a href='/logout.php'>Logout</a></button>";
+        echo "<button><a href='/logout.php'>Logout</a></button><br>";
+        echo "<button><a href='/changePassword.php'>Cambiar contraseña</a></button>";
       }
 		?>
 		<table>
