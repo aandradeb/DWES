@@ -1,170 +1,130 @@
-*{
-	box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
 
-:root {
-  --color-primary: #DDEFEF;
-  --color-secondary: #6dd5ed;
-  --color-primary-dark:#192294;
-  --color-border:#eeeeee;
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
   margin: 0;
-  min-height: 100vh;
+  padding: 0;
+  background: linear-gradient(120deg, #2980b9, #8e44ad);
+  height: 100vh;
+  overflow: hidden;
 }
 
-.form{
-	position: absolute;
+.center {
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); 
-  width: 600px;
-	background: #fff;
-	border-radius: 1rem;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-	padding: 3em 2.2em;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.05);
 }
 
-.button-input-group {
-	display: grid;
-	place-items: center;
-	margin-top: .6rem;
+.center p {
+  font-size: 2rem;
+  text-align: center;
+  margin: 1.5rem 0;
 }
 
-.group {
-	width: 90%;
-	height: 47px;
-	margin-bottom: 1.3rem;
+.center form {
+  padding: 0 40px;
+  border-top: 1px solid silver;
+  padding-bottom: 2rem;
 }
 
-.group input,
-.group button {
-	width: 100%;
-	height: 100%;
-	border: none;
-	outline: none;
-	border-radius: .4rem;
+.txt_field {
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 30px 0;
 }
 
-.group.button-group {
-	width: 60%;
+.txt_field input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
 }
 
-.group input {
-	border: 2px solid var(--color-border);
-	padding: 0 1.1rem;
+.txt_field label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: .5s;
 }
 
-.group input::placeholder {
-	opacity: .9;
+.txt_field span::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #2691d9;
+  transition: .5s;
 }
 
-.form-link {
-	margin: 1.6rem 0 1.8rem 0;
+.txt_field input:focus~label,
+.txt_field input:valid~label {
+  top: -5px;
+  color: #2691d9;
 }
 
-.alert-text.signup__alert {
-	margin-bottom: 2.2rem;
+.txt_field input:focus~span::before,
+.txt_field input:valid~span::before {
+  width: 100%;
 }
 
-.alert-text .help__text {
-	position: absolute;
-	left: 4rem;
-	font-size: var(--step--2);
-	margin-top: -1rem;
-	opacity: .7;
+.pass {
+  margin: -5px 0 20px 5px;
+  color: #a6a6a6;
+  cursor: pointer;
 }
 
-a.link,
-a.login-link,
-.alert-text .help__text {
-	color: var(--color-link);
+.pass:hover {
+  text-decoration: underline;
 }
 
-a.link:hover,
-a.login-link:hover {
-	color: var(--color-link-dark);
-	text-decoration: underline;
-	transition: all .4s ease;
+input[type="submit"] {
+  width: 100%;
+  height: 50px;
+  border: 1px solid;
+  background: #2691d9;
+  border-radius: 25px;
+  font-size: 18px;
+  color: #e9f4fb;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
 }
 
-/* -----------------The start of Validation* ----------------- */
-
-.form input:focus,
-.forum input:not(:placeholder-shown) {
-	background-color: var(--color-background);
-	border-color: var(--color-border-focus);
+input[type="submit"]:hover {
+  border-color: #2691d9;
+  transition: .5s;
 }
 
-.form input:focus,
-.forum input:placeholder-shown {
-	box-shadow: 0 0 0 2px var(--color-border-focus);
+.signup_link {
+  margin: 30px 0;
+  text-align: center;
+  font-size: 16px;
+  color: #666666;
 }
 
-.form input:focus:valid {
-	box-shadow: 0 0 0 2px var(--color-success);
+.signup_link a {
+  color: #2691d9;
+  text-decoration: none;
 }
 
-.form input:valid:not(:placeholder-shown) {
-	border-color: var(--color-success);
-}
-
-.form input:focus:invalid {
-	box-shadow: 0 0 0 2px var(--color-error);
-}
-
-.form input:invalid:not(:placeholder-shown) {
-	border-color: var(--color-error);
-}
-
-/* -----------------The start of Button Design* ----------------- */
-
-.group button {
-	position: relative;
-	background: var(--color-secondary);
-	cursor: pointer;
-}
-
-.group button span {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	-ms-flex-pack: center;
-	justify-content: center;
-	-ms-flex-align: center;
-	align-items: center;
-	font-weight: 500;
-	color: var(--color-primary);
-	letter-spacing: 1px;
-	background: transparent;
-	border-radius: .6rem;
-	z-index: 99;
-}
-
-.group button:hover span {
-	background-color: var(--color-primary);
-	color: #fff;
-	transform: scale(1.1);
-	transition: all .2s ease;
-	transition-delay: .3s;
-	
-}
-
-.group button::before {
-	position: absolute;
-	content: '';
-	width: 1.5rem;
-	height: 1.5rem;
-	top: 1px;
-	left: 1px;
-}
-
-.group button::after {
-	position: absolute;
-	content: '';
-	width: 1.5rem;
-	height: 1.5rem;
-	bottom: 1px;
-	right: 1px;
+.signup_link a:hover {
+  text-decoration: underline;
 }
