@@ -9,7 +9,7 @@ def pagina_de_prueba(request):
     return HttpResponse("<h1>Hola caracola</h1>")
 
 
-def devolver_juego(request, id_solicitado):
+def devolver_juego_por_id(request, id_solicitado):
     juego = Tjuegos.objects.get(id=id_solicitado)
     comentarios = juego.tcomentarios_set.all()
     lista_comentarios = []
