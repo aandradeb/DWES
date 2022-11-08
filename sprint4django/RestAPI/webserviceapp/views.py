@@ -42,7 +42,9 @@ def devolver_juego_por_id(request, id_solicitado):
     resultado = {
         'id': juego.id,
         'nombre': juego.nombre,
+        'desarrolladora': juego.desarrolladora,
         'fecha_lanzamiento': juego.fecha_lanzamiento,
+        'url_imagen': juego.url_imagen,
         'comentarios': lista_comentarios
     }
 
