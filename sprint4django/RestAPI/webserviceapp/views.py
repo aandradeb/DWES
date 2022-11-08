@@ -1,7 +1,9 @@
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+import json
 
-from webserviceapp.models import Tjuegos
+from webserviceapp.models import Tcomentarios, Tjuegos
 
 
 # Create your views here.
@@ -46,6 +48,16 @@ def devolver_juego_por_id(request, id_solicitado):
 
     return JsonResponse(resultado, json_dumps_params={'ensure_ascii':False})
 
+@csrf_exempt
+def guardar_comentario(request, id_solicitado):
+    if request.method != 'POST':
+        return None
 
-def crear_comentario_juego(request, id_solicitado):
-    pass
+    json_peticion = json.loads(request.body)
+
+    nuevo_comentario = Tcomentarios()
+    nuevo_comentario.comentario = json_peticion['nuevo_comentario']
+    nuevo_comentario.juego = Tjuegos.objects.get(id=id_solicitado)
+    nuevo_comentario.save()
+
+    return JsonResponse({"status": "ok"})
