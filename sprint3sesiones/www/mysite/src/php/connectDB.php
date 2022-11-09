@@ -1,5 +1,5 @@
 <?php
-  $HOST = 'localhost';
+  $HOST = '172.16.0.2';
   $USERNAME = 'root';
   $PASSWORD = '1234';
   $DATABASE_NAME = 'mysitedb';
